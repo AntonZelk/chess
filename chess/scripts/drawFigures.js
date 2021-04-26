@@ -1,6 +1,26 @@
 import { Pawn, Rook, Knight, Bishop, Queen, King } from "./classFigure.js";
 
-let drawFiguresWithType = (side, type, coordX, coordY, amount, dopNumber) => {
+const createMatrixChessBoard = () => {
+  let counterNum = 8;
+  let counterLetters = 8;
+  const array = new Array(8).fill("").map((elNum, i) => {
+    return (elNum = new Array(8).fill("").map((elLetter, j) => {
+      let k = "\u0041";
+      console.log(k);
+      let key = "1";
+      elLetter = new Map();
+      elLetter.set("1", key);
+      return elLetter;
+    }));
+  });
+
+  return array;
+};
+
+const matrixChessBoard = createMatrixChessBoard();
+
+console.log(matrixChessBoard);
+const drawFiguresWithType = (side, type, coordX, coordY, amount, dopNumber) => {
   for (let i = 0; i < amount; i++) {
     let newFigure;
     if (type === "pawn" || type === "rook") {
@@ -29,7 +49,7 @@ let drawFiguresWithType = (side, type, coordX, coordY, amount, dopNumber) => {
   }
 };
 
-let drawFigures = () => {
+const drawFigures = () => {
   drawFiguresWithType("white", "pawn", 50, "300px", 8);
   drawFiguresWithType("white", "rook", 350, "350px", 2);
   drawFiguresWithType("white", "knight", 50, "350px", 2, 5);

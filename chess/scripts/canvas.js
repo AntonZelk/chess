@@ -1,5 +1,5 @@
-let createCanvas = () => {
-  let canvas = document.querySelector("#canvas");
+const createCanvas = () => {
+  const canvas = document.querySelector("#canvas");
 
   canvas.width = 400;
   canvas.height = 400;
