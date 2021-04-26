@@ -1,0 +1,74 @@
+@import url(./nullstyle.css);
+
+.wrapper {
+  width: 100%;
+  max-width: 1920px;
+}
+
+.chess-board {
+  display: flex;
+  border: 1px solid black;
+  max-width: 452px;
+  width: 100%;
+  margin: 50px auto;
+
+  &__row {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__canvas {
+    position: relative;
+    width: 100%;
+    max-width: 400px;
+    height: 400px;
+    border: 1px solid black;
+    box-sizing: initial;
+  }
+}
+.numbers {
+  &__row {
+    height: 400px;
+    margin: 24px 5px;
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: space-around;
+    font-size: 24px;
+    font-family: "Zen Dots", cursive;
+  }
+  p {
+    display: flex;
+    align-items: center;
+  }
+}
+.letters {
+  &__row {
+    width: 400px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    font-size: 24px;
+    font-family: "Zen Dots", cursive;
+  }
+}
+.fa-chess-pawn,
+.fa-chess-rook,
+.fa-chess-knight,
+.fa-chess-bishop,
+.fa-chess-queen,
+.fa-chess-king {
+  position: absolute;
+  font-size: 40px;
+  cursor: pointer;
+  width: 50px;
+  height: 50px;
+  text-align: center;
+}
+.fa-chess-pawn::before,
+.fa-chess-rook::before,
+.fa-chess-knight::before,
+.fa-chess-bishop::before,
+.fa-chess-queen::before,
+.fa-chess-king::before {
+  vertical-align: middle;
+}
