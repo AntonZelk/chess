@@ -1,13 +1,10 @@
-import { createCanvas } from "./canvas.js";
-import { drawFigures } from "./drawFigures.js";
+// import { drawFigures } from "./drawFigures.js";
+import { chessBoard } from "./objectChessBoard.js";
 
-const chessBoard = document.querySelector("#chessBoard");
+let startGame = () => {
+  chessBoard.field.drawField();
+  chessBoard.field.addFigures();
+  console.log(chessBoard.matrixChessBoard);
+};
 
-// chessBoard.addEventListener("click", (event) => {
-//   let target = event.target.closest("i");
-//   if (!target) return;
-//   if (!chessBoard.contains(target)) return;
-// });
-
-drawFigures();
-createCanvas();
+startGame();

@@ -17,8 +17,8 @@ class ChessFigure {
     }
 
     newItem.style.position = "absolute";
-    newItem.style.left = coordX;
-    newItem.style.top = coordY;
+    newItem.style.left = coordX + "px";
+    newItem.style.top = coordY + "px";
 
     chessBoard.append(newItem);
   }
@@ -35,30 +35,35 @@ class Pawn extends ChessFigure {
 }
 
 class Rook extends ChessFigure {
-  //   constructor(...args) {
-  //     super(...args);
-  //   }
+  constructor(className, side) {
+    super(className, side);
+    this._id = "rook";
+  }
 }
 
 class Knight extends ChessFigure {
-  //   constructor(...args) {
-  //     super(...args);
-  //   }
+  constructor(className, side) {
+    super(className, side);
+    this._id = "knight";
+  }
 }
 class Bishop extends ChessFigure {
-  //   constructor(...args) {
-  //     super(...args);
-  //   }
+  constructor(className, side) {
+    super(className, side);
+    this._id = "bishop";
+  }
 }
 class Queen extends ChessFigure {
-  //   constructor(...args) {
-  //     super(...args);
-  //   }
+  constructor(className, side) {
+    super(className, side);
+    this._id = "queen";
+  }
 }
 class King extends ChessFigure {
-  //   constructor(...args) {
-  //     super(...args);
-  //   }
+  constructor(className, side) {
+    super(className, side);
+    this._id = "king";
+  }
 }
 
 export { Pawn, Rook, Knight, Bishop, Queen, King };
