@@ -17,8 +17,9 @@
     flex-direction: column;
   }
 
-  &__canvas {
+  &__field {
     position: relative;
+
     width: 100%;
     max-width: 400px;
     height: 400px;
@@ -71,4 +72,23 @@
 .fa-chess-queen::before,
 .fa-chess-king::before {
   vertical-align: middle;
+}
+.active {
+  background-color: rgb(179, 184, 182);
+  border: 1px solid black;
+}
+
+.field {
+  display: flex;
+  flex-wrap: wrap;
+  &__cell {
+    width: 50px;
+    height: 50px;
+    &_white {
+      background-color: #fff;
+    }
+    &_black {
+      background-color: #000;
+    }
+  }
 }

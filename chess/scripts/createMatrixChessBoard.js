@@ -15,11 +15,12 @@ const createMatrixChessBoard = () => {
     ];
 
   for (let i = 0; i < 8; i++) {
-    const obj = {};
+    const horizontal = [];
 
     for (let j = 0; j < 8; j++) {
       let newFigure;
       let side = "white";
+      const cell = {};
 
       if (startPosition[i][j] === startPosition[i][j].toUpperCase()) {
         side = "black";
@@ -50,13 +51,14 @@ const createMatrixChessBoard = () => {
           newFigure = new Pawn(`fa-chess-pawn`, side);
           break;
         case " ":
-          newFigure = "";
+          newFigure = null;
           break;
       }
-
-      obj[`${myArrayLetters[j]}${i + 1}`] = newFigure;
+      cell.key = `${myArrayLetters[j]}${i + 1}`;
+      cell.figure = newFigure;
+      horizontal.push(cell);
     }
-    array.push(obj);
+    array.push(horizontal);
   }
   return array.reverse();
 };

@@ -1,10 +1,9 @@
 // import { drawFigures } from "./drawFigures.js";
-import { chessBoard } from "./objectChessBoard.js";
+import { chessBoardField } from "./objectChessBoard.js";
 
 let startGame = () => {
-  chessBoard.field.drawField();
-  chessBoard.field.addFigures();
-  console.log(chessBoard.matrixChessBoard);
+  chessBoardField.drawField();
+  chessBoardField.addFigures();
 };
 
 startGame();
