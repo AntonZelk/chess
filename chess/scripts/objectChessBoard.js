@@ -1,5 +1,4 @@
 import { matrixChessBoard } from "./createMatrixChessBoard.js";
-import { Cell } from "./createObjCell.js";
 
 const field = document.querySelector("#field");
 
@@ -26,7 +25,6 @@ const chessBoardField = {
     });
   },
   drawFigures() {
-    const chessBoard = document.querySelector("#chessBoard");
     const step = 50;
     this.matrixChessBoard.forEach((arr, i) => {
       let counterForX = 0;
@@ -36,27 +34,20 @@ const chessBoardField = {
         let coordY = i * step;
 
         if (cell.figure !== null) {
-          cell.figure.createFigure(field, coordX, coordY);
+          cell.figure.createFigure(field, coordX, coordY, cell);
         }
         counterForX++;
       }
     });
   },
-  //   const step = 50;
-  //   this.matrixChessBoard.forEach((arr, i) => {
-  //     let counterForX = 0;
-
-  //     for (let el of arr) {
-  //       let coordX = counterForX * step;
-  //       let coordY = i * step;
-
-  //       if (el.figure !== null) {
-  //         el.figure.createFigure(coordX, coordY, el.key, el);
-  //       }
-  //       counterForX++;
-  //     }
-  //   });
-  // },
+  removeAllClassActive() {
+    this.matrixChessBoard.forEach((arr, i) => {
+      for (let cell of arr) {
+        cell.active = false;
+        cell.checkActive();
+      }
+    });
+  },
 };
 
 export { chessBoardField };

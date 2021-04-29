@@ -1,4 +1,5 @@
 import { selectItem } from "./selectItem.js";
+
 class ChessFigure {
   constructor(key, side, id) {
     this.key = key;
@@ -9,7 +10,7 @@ class ChessFigure {
     this.element = null;
     this.selected = false;
   }
-  createFigure(field, coordX, coordY) {
+  createFigure(field, coordX, coordY, objCell) {
     const newItem = document.createElement("i");
 
     newItem.className = "fas";
@@ -22,12 +23,23 @@ class ChessFigure {
     }
 
     newItem.style.position = "absolute";
-    newItem.style.left = coordX + "px";
-    newItem.style.top = coordY + "px";
+    this.coordX = coordX;
+    this.coordY = coordY;
+    newItem.style.left = this.coordX + "px";
+    newItem.style.top = this.coordY + "px";
+
+    newItem.addEventListener("click", () => {
+      selectItem(objCell, this);
+    });
 
     this.element = newItem;
 
     field.append(newItem);
+  }
+  showPossibleMoves() {
+    if (this.selected) {
+      console.log(this.key);
+    }
   }
 }
 

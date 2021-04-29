@@ -23,6 +23,8 @@ const createMatrixChessBoard = () => {
       let key = `${myArrayLetters[j]}${i + 1}`;
 
       let cell = new Cell(key);
+      cell.active = false;
+
       if (startPosition[i][j] === startPosition[i][j].toUpperCase()) {
         side = "black";
       }
@@ -56,7 +58,7 @@ const createMatrixChessBoard = () => {
           cell.figure = null;
           break;
       }
-      cell.active = false;
+
       horizontal.push(cell);
     }
     array.push(horizontal);

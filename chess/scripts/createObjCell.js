@@ -8,8 +8,10 @@ class Cell {
   }
   createCell(field) {
     const cell = document.createElement("div");
+
     cell.id = this.key;
     cell.className = "field__cell";
+
     this.cell = cell;
     field.append(cell);
   }
@@ -18,6 +20,13 @@ class Cell {
       this.cell.classList.add("field__cell_white");
     } else {
       this.cell.classList.add("field__cell_black");
+    }
+  }
+  checkActive() {
+    if (this.active) {
+      this.cell.classList.add("active");
+    } else {
+      this.cell.classList.remove("active");
     }
   }
 }
