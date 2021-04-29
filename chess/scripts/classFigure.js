@@ -1,14 +1,16 @@
+import { selectItem } from "./selectItem.js";
 class ChessFigure {
-  constructor(className, side) {
-    this.className = className;
+  constructor(key, side, id) {
+    this.key = key;
     this.side = side;
-    this.elemOnTheBoard = null;
-    this.key = "";
+    this.id = id;
+    this.coordX = undefined;
+    this.coordY = undefined;
+    this.element = null;
     this.selected = false;
   }
-  createFigure(coordX, coordY, key) {
-    let newItem = document.createElement("i");
-    let chessBoard = document.querySelector("#chessBoard");
+  createFigure(field, coordX, coordY) {
+    const newItem = document.createElement("i");
 
     newItem.className = "fas";
     newItem.classList.add(this.className);
@@ -23,49 +25,54 @@ class ChessFigure {
     newItem.style.left = coordX + "px";
     newItem.style.top = coordY + "px";
 
-    this.elemOnTheBoard = newItem;
-    this.key = key;
+    this.element = newItem;
 
-    chessBoard.append(newItem);
+    field.append(newItem);
   }
 }
 
 class Pawn extends ChessFigure {
-  constructor(className, side) {
-    super(className, side);
-    this.id = "pawn";
+  constructor(key, side, id) {
+    super(key, side);
+    this.className = "fa-chess-pawn";
+    this.id = `${id}-pawn`;
   }
 }
 
 class Rook extends ChessFigure {
-  constructor(className, side) {
-    super(className, side);
-    this.id = "rook";
+  constructor(key, side, id) {
+    super(key, side);
+    this.className = "fa-chess-rook";
+    this.id = `${id}-rook`;
   }
 }
 
 class Knight extends ChessFigure {
-  constructor(className, side) {
-    super(className, side);
-    this.id = "knight";
+  constructor(key, side, id) {
+    super(key, side);
+    this.className = "fa-chess-knight";
+    this.id = `${id}-knight`;
   }
 }
 class Bishop extends ChessFigure {
-  constructor(className, side) {
-    super(className, side);
-    this.id = "bishop";
+  constructor(key, side, id) {
+    super(key, side);
+    this.className = "fa-chess-bishop";
+    this.id = `${id}-bishop`;
   }
 }
 class Queen extends ChessFigure {
-  constructor(className, side) {
-    super(className, side);
-    this.id = "queen";
+  constructor(key, side, id) {
+    super(key, side);
+    this.className = "fa-chess-queen";
+    this.id = `${id}-queen`;
   }
 }
 class King extends ChessFigure {
-  constructor(className, side) {
-    super(className, side);
-    this.id = "king";
+  constructor(key, side, id) {
+    super(key, side);
+    this.className = "fa-chess-king";
+    this.id = `${id}-king`;
   }
 }
 

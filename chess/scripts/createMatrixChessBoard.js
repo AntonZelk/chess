@@ -1,4 +1,5 @@
 import { Pawn, Rook, Knight, Bishop, Queen, King } from "./classFigure.js";
+import { Cell } from "./createObjCell.js";
 
 const createMatrixChessBoard = () => {
   const array = [],
@@ -18,44 +19,44 @@ const createMatrixChessBoard = () => {
     const horizontal = [];
 
     for (let j = 0; j < 8; j++) {
-      let newFigure;
       let side = "white";
-      const cell = {};
+      let key = `${myArrayLetters[j]}${i + 1}`;
 
+      let cell = new Cell(key);
       if (startPosition[i][j] === startPosition[i][j].toUpperCase()) {
         side = "black";
       }
+      let id = side;
       switch (startPosition[i][j]) {
         case "r":
         case "R":
-          newFigure = new Rook(`fa-chess-rook`, side);
+          cell.figure = new Rook(key, side, id);
           break;
         case "n":
         case "N":
-          newFigure = new Knight(`fa-chess-knight`, side);
+          cell.figure = new Knight(key, side, id);
           break;
         case "b":
         case "B":
-          newFigure = new Bishop(`fa-chess-bishop`, side);
+          cell.figure = new Bishop(key, side, id);
           break;
         case "q":
         case "Q":
-          newFigure = new Queen(`fa-chess-queen`, side);
+          cell.figure = new Queen(key, side, id);
           break;
         case "k":
         case "K":
-          newFigure = new King(`fa-chess-king`, side);
+          cell.figure = new King(key, side, id);
           break;
         case "p":
         case "P":
-          newFigure = new Pawn(`fa-chess-pawn`, side);
+          cell.figure = new Pawn(key, side, id);
           break;
         case " ":
-          newFigure = null;
+          cell.figure = null;
           break;
       }
-      cell.key = `${myArrayLetters[j]}${i + 1}`;
-      cell.figure = newFigure;
+      cell.active = false;
       horizontal.push(cell);
     }
     array.push(horizontal);

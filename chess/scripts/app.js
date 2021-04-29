@@ -3,7 +3,7 @@ import { chessBoardField } from "./objectChessBoard.js";
 
 let startGame = () => {
   chessBoardField.drawField();
-  chessBoardField.addFigures();
+  chessBoardField.drawFigures();
 };
 
 startGame();

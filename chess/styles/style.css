@@ -97,11 +97,6 @@
   vertical-align: middle;
 }
 
-.active {
-  background-color: #b3b8b6;
-  border: 1px solid black;
-}
-
 .field {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -121,5 +116,10 @@
 
 .field__cell_black {
   background-color: #000;
+}
+
+.active {
+  background-color: #b3b8b6;
+  border: 1px solid black;
 }
 /*# sourceMappingURL=style.css.map */

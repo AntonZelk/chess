@@ -73,10 +73,6 @@
 .fa-chess-king::before {
   vertical-align: middle;
 }
-.active {
-  background-color: rgb(179, 184, 182);
-  border: 1px solid black;
-}
 
 .field {
   display: flex;
@@ -91,4 +87,8 @@
       background-color: #000;
     }
   }
+}
+.active {
+  background-color: rgb(179, 184, 182);
+  border: 1px solid black;
 }
