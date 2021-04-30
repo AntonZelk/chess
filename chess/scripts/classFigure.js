@@ -36,11 +36,28 @@ class ChessFigure {
 
     field.append(newItem);
   }
-  showPossibleMoves() {
-    if (this.selected) {
-      console.log(this.key);
-    }
+  showPossibleMoves(matrix, numbPotentialMoves, condition) {
+    const horizontalKey = Number(this.key[1]),
+      verticalKey = this.key[0],
+      arrayKeysPossibleMoves = condition(
+        horizontalKey,
+        verticalKey,
+        numbPotentialMoves
+      );
+
+    arrayKeysPossibleMoves.forEach((key) => {
+      matrix.forEach((arr) => {
+        arr.forEach((cell) => {
+          if (cell.key === key) {
+            cell.active = true;
+            cell.checkActive();
+            cell.checkEventClick();
+          }
+        });
+      });
+    });
   }
+  move(arrCoord) {}
 }
 
 class Pawn extends ChessFigure {
@@ -48,6 +65,22 @@ class Pawn extends ChessFigure {
     super(key, side);
     this.className = "fa-chess-pawn";
     this.id = `${id}-pawn`;
+  }
+  showPossibleMoves(matrix) {
+    const condition = (horizontalKey, verticalKey, numbPotentialMoves) => {
+      let array = [];
+      for (let i = 1; i <= numbPotentialMoves; i++) {
+        let key = verticalKey;
+        if (this.side === "white") {
+          key = key + `${horizontalKey + i}`;
+        } else {
+          key = key + `${horizontalKey - i}`;
+        }
+        array.push(key);
+      }
+      return array;
+    };
+    super.showPossibleMoves(matrix, 2, condition);
   }
 }
 
@@ -57,6 +90,7 @@ class Rook extends ChessFigure {
     this.className = "fa-chess-rook";
     this.id = `${id}-rook`;
   }
+  showPossibleMoves(matrix) {}
 }
 
 class Knight extends ChessFigure {
@@ -65,6 +99,7 @@ class Knight extends ChessFigure {
     this.className = "fa-chess-knight";
     this.id = `${id}-knight`;
   }
+  showPossibleMoves(matrix) {}
 }
 class Bishop extends ChessFigure {
   constructor(key, side, id) {
@@ -72,6 +107,7 @@ class Bishop extends ChessFigure {
     this.className = "fa-chess-bishop";
     this.id = `${id}-bishop`;
   }
+  showPossibleMoves(matrix) {}
 }
 class Queen extends ChessFigure {
   constructor(key, side, id) {
@@ -79,6 +115,7 @@ class Queen extends ChessFigure {
     this.className = "fa-chess-queen";
     this.id = `${id}-queen`;
   }
+  showPossibleMoves(matrix) {}
 }
 class King extends ChessFigure {
   constructor(key, side, id) {
@@ -86,6 +123,7 @@ class King extends ChessFigure {
     this.className = "fa-chess-king";
     this.id = `${id}-king`;
   }
+  showPossibleMoves(matrix) {}
 }
 
 export { Pawn, Rook, Knight, Bishop, Queen, King };

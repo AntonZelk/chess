@@ -1,3 +1,4 @@
+import { chessBoardField } from "./objectChessBoard.js";
 class Cell {
   constructor(key, figure, active) {
     this.key = key;
@@ -27,6 +28,17 @@ class Cell {
       this.cell.classList.add("active");
     } else {
       this.cell.classList.remove("active");
+    }
+  }
+
+  getCoord() {}
+  checkEventClick() {
+    if (this.active === true && this.figure === null) {
+      this.cell.addEventListener("click", this.getCoord);
+      console.log(this.getCoord());
+    }
+    if (!this.active) {
+      this.cell.removeEventListener("click", this.getCoord);
     }
   }
 }

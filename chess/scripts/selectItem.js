@@ -1,13 +1,13 @@
 import { chessBoardField } from "./objectChessBoard.js";
-import { possibleMoves } from "./possibleMoves.js";
 
 const selectItem = (cell, figure) => {
   if (!cell.active) {
-    chessBoardField.removeAllClassActive();
+    chessBoardField.removeAllActive();
     cell.active = true;
     figure.selected = true;
-    figure.showPossibleMoves();
+    figure.showPossibleMoves(chessBoardField.matrixChessBoard);
   } else {
+    chessBoardField.removeAllActive();
     cell.active = false;
     figure.selected = false;
   }

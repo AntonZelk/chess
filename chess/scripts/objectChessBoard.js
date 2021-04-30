@@ -40,11 +40,12 @@ const chessBoardField = {
       }
     });
   },
-  removeAllClassActive() {
+  removeAllActive() {
     this.matrixChessBoard.forEach((arr, i) => {
       for (let cell of arr) {
         cell.active = false;
         cell.checkActive();
+        cell.checkEventClick();
       }
     });
   },
