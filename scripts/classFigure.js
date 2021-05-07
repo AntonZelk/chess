@@ -1,16 +1,11 @@
-import { selectItem } from "./selectItem.js";
-
+import { chessBoardField } from "./objectChessBoard.js";
 class ChessFigure {
-  constructor(key, side, id) {
+  constructor(key, side) {
     this.key = key;
     this.side = side;
-    this.id = id;
-    this.coordX = undefined;
-    this.coordY = undefined;
-    this.element = null;
-    this.selected = false;
+    this.possibleMoves = [];
   }
-  createFigure(field, coordX, coordY, objCell) {
+  createFigure(objCell) {
     const newItem = document.createElement("i");
 
     newItem.className = "fas";
@@ -23,18 +18,8 @@ class ChessFigure {
     }
 
     newItem.style.position = "absolute";
-    this.coordX = coordX;
-    this.coordY = coordY;
-    newItem.style.left = this.coordX + "px";
-    newItem.style.top = this.coordY + "px";
 
-    newItem.addEventListener("click", () => {
-      selectItem(objCell, this);
-    });
-
-    this.element = newItem;
-
-    field.append(newItem);
+    objCell.cell.append(newItem);
   }
   showPossibleMoves(matrix, numbPotentialMoves, condition) {
     const horizontalKey = Number(this.key[1]),
@@ -49,15 +34,17 @@ class ChessFigure {
       matrix.forEach((arr) => {
         arr.forEach((cell) => {
           if (cell.key === key) {
+            this.possibleMoves.push(cell);
             cell.active = true;
             cell.checkActive();
-            cell.checkEventClick();
           }
         });
       });
     });
   }
-  move(arrCoord) {}
+  move(objCell) {
+    console.log(objCell);
+  }
 }
 
 class Pawn extends ChessFigure {

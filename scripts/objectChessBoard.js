@@ -10,6 +10,7 @@ const chessBoardField = {
     this.matrixChessBoard.forEach((arr, i) => {
       arr.forEach((cell, j) => {
         cell.createCell(field);
+        cell.selectCell();
         cell.color = "white";
         if ((i + 1) % 2 === 0) {
           if ((j + 1) % 2 !== 0) {
@@ -25,30 +26,29 @@ const chessBoardField = {
     });
   },
   drawFigures() {
-    const step = 50;
     this.matrixChessBoard.forEach((arr, i) => {
-      let counterForX = 0;
-
       for (let cell of arr) {
-        let coordX = counterForX * step;
-        let coordY = i * step;
-
         if (cell.figure !== null) {
-          cell.figure.createFigure(field, coordX, coordY, cell);
+          cell.figure.createFigure(cell);
         }
-        counterForX++;
       }
     });
   },
   removeAllActive() {
-    this.matrixChessBoard.forEach((arr, i) => {
+    this.matrixChessBoard.forEach((arr) => {
       for (let cell of arr) {
         cell.active = false;
         cell.checkActive();
-        cell.checkEventClick();
       }
     });
   },
+  // updateMatrix() {
+  //   this.matrixChessBoard.forEach((el) => {
+  //     el.forEach((cell) => {
+  //       console.log(cell);
+  //     });
+  //   });
+  // },
 };
 
 export { chessBoardField };

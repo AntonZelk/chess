@@ -1,4 +1,5 @@
 import { chessBoardField } from "./objectChessBoard.js";
+
 class Cell {
   constructor(key, figure, active) {
     this.key = key;
@@ -31,15 +32,27 @@ class Cell {
     }
   }
 
-  getCoord() {}
-  checkEventClick() {
-    if (this.active === true && this.figure === null) {
-      this.cell.addEventListener("click", this.getCoord);
-      console.log(this.getCoord());
-    }
-    if (!this.active) {
-      this.cell.removeEventListener("click", this.getCoord);
-    }
+  moveToThisCell() {
+    this.cell.addEventListener("click", () => {
+      if (this.active && this.figure === null) {
+        console.log("hi");
+        chessBoardField.removeAllActive();
+      }
+    });
+  }
+  selectCell() {
+    this.cell.addEventListener("click", () => {
+      if (!this.active && this.figure != null) {
+        chessBoardField.removeAllActive();
+        this.active = true;
+        console.log(this.figure);
+        this.figure.showPossibleMoves(chessBoardField.matrixChessBoard);
+        this.figure.possibleMoves.forEach((cell) => {
+          cell.moveToThisCell();
+        });
+      }
+      this.checkActive();
+    });
   }
 }
 
